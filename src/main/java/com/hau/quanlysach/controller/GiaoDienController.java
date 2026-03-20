@@ -46,4 +46,9 @@ public class GiaoDienController {
     public String trangMuonTra() {
         return "muon-tra/index";
     }
+
+    @GetMapping("/theloai")
+    public String trangTheLoai() {
+        return "theloai/index";
+    }
 }
