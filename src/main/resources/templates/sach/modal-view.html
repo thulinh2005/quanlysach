@@ -1,0 +1,43 @@
+<div th:fragment="modal-view">
+    <div class="modal fade" id="viewBookModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; border: none; overflow: hidden;">
+                <div class="modal-body p-0">
+                    <div class="row g-0">
+                        <div class="col-md-5 bg-light d-flex align-items-center justify-content-center p-4">
+                            <img id="view-biaSach" src="" alt="Cover" class="shadow-sm"
+                                style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+                        </div>
+                        <div class="col-md-7 p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="fw-bold text-primary mb-0" id="view-tenSach">Tên sách</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <hr class="opacity-10">
+                            <div class="mb-2"><small class="text-muted">Tác giả:</small> <span class="fw-bold d-block"
+                                    id="view-tacGia"></span></div>
+                            <div class="mb-2"><small class="text-muted">Thể loại:</small> <span class="fw-bold d-block"
+                                    id="view-theLoai"></span></div>
+                            <div class="mb-2"><small class="text-muted">Nhà xuất bản:</small> <span
+                                    class="fw-bold d-block" id="view-nxb"></span></div>
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <small class="text-muted">Năm XB:</small> <span class="fw-bold d-block"
+                                        id="view-namXB"></span>
+                                </div>
+                                <div class="col-6">
+                                    <small class="text-muted">Số lượng:</small> <span class="fw-bold d-block"
+                                        id="view-soLuong"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-3 bg-light">
+                    <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal"
+                        style="border-radius: 10px;">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

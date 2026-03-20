@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head}"></head>
+
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-bold">Danh mục sách hiện có</h3>
+            <div class="d-flex gap-2">
+                <div class="d-flex gap-2">
+                    <select id="searchCategory" class="form-select shadow-sm" style="border-radius: 8px; width: 160px;">
+                        <option value="3">Tên sách</option>
+                        <option value="5">Tác giả</option>
+                        <option value="4">Thể loại</option>
+                        <option value="7">Nhà xuất bản</option>
+                        <option value="6">Năm XB</option>
+                    </select>
+
+                    <input type="text" id="searchInput" class="form-control shadow-sm" placeholder="Nhập từ khóa..."
+                        style="border-radius: 8px; width: 200px;">
+                </div>
+                <button class="btn btn-primary btn-primary-custom" data-bs-toggle="modal"
+                    data-bs-target="#addBookModal">
+                    <i class="bi bi-plus-lg me-2"></i>Thêm sách mới
+                </button>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm" style="border-radius: 12px; overflow: hidden;">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="ps-3">Mã</th>
+                            <th>Bìa</th>
+                            <th>Tên sách</th>
+                            <th>Thể loại</th>
+                            <th>Tác giả</th>
+                            <th>Năm XB</th>
+                            <th>NXB</th>
+                            <th>Số lượng</th>
+                            <th class="text-center">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="sach : ${danhSachSach}">
+                            <td class="ps-3 fw-bold" th:text="${sach.maSach}">1</td>
+                            <td>
+                                <img th:src="@{'/images/' + ${sach.biaSach}}" alt="Cover"
+                                    style="width: 40px; height: 55px; object-fit: cover; border-radius: 4px;">
+                            </td>
+                            <td>
+                                <div class="fw-bold" th:text="${sach.tenSach}">Tên sách</div>
+                            </td>
+                            <td th:text="${sach.theLoai != null ? sach.theLoai.tenTheLoai : '-'}">Thể loại</td>
+                            <td th:text="${sach.tacGia != null ? sach.tacGia.tenTacGia : '-'}">Tác giả</td>
+                            <td th:text="${sach.namXuatBan}">2024</td>
+                            <td th:text="${sach.nhaXuatBan != null ? sach.nhaXuatBan.tenNxb : '-'}">NXB</td>
+                            <td>
+                                <span class="badge bg-light text-dark border" th:text="${sach.soLuong}">0</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group gap-2">
+                                    <a href="#" class="text-primary view-btn" title="Xem chi tiết"
+                                        data-bs-toggle="modal" data-bs-target="#viewBookModal"
+                                        th:data-ten="${sach.tenSach}" th:data-tacgia="${sach.tacGia?.tenTacGia}"
+                                        th:data-theloai="${sach.theLoai?.tenTheLoai}"
+                                        th:data-nxb="${sach.nhaXuatBan?.tenNxb}" th:data-nam="${sach.namXuatBan}"
+                                        th:data-soluong="${sach.soLuong}" th:data-bia="${sach.biaSach}">
+                                        <i class="bi bi-eye-fill fs-5"></i>
+                                    </a>
+                                    <a href="#" class="text-warning edit-btn" title="Sửa" data-bs-toggle="modal"
+                                        data-bs-target="#editBookModal" th:data-id="${sach.maSach}"
+                                        th:data-ten="${sach.tenSach}" th:data-tacgia="${sach.tacGia?.maTacGia}"
+                                        th:data-theloai="${sach.theLoai?.maTheLoai}"
+                                        th:data-nxb="${sach.nhaXuatBan?.maNxb}" th:data-nam="${sach.namXuatBan}"
+                                        th:data-soluong="${sach.soLuong}">
+                                        <i class="bi bi-pencil-square fs-5"></i>
+                                    </a>
+                                    <a th:href="@{'/api/sach/xoa/' + ${sach.maSach}}" class="text-danger" title="Xóa"
+                                        onclick="return confirmDelete(event)">
+                                        <i class="bi bi-trash3-fill fs-5"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{sach/modal-add :: modal-add}"></div>
+    <div th:replace="~{sach/modal-edit :: modal-edit}"></div>
+    <div th:replace="~{sach/modal-view :: modal-view}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/sach.js}"></script>
+</body>
+
+</html>

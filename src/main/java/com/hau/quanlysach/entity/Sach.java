@@ -12,6 +12,9 @@ public class Sach {
     @Column(name = "ma_sach")
     private Integer maSach;
 
+    @Column(name = "bia_sach")
+    private String biaSach;
+
     @Column(name = "ten_sach")
     private String tenSach;
 
@@ -29,5 +32,4 @@ public class Sach {
 
     private Integer namXuatBan;
     private Integer soLuong;
-    private String biaSach;
 }

@@ -1,0 +1,78 @@
+<div th:fragment="modal-add">
+    <div class="modal fade" id="addBookModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content"
+                style="border-radius: 16px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div class="modal-header border-0 pt-4 px-4 pb-0">
+                    <h5 class="fw-bold"><i class="bi bi-journal-plus me-2 text-primary"></i>Thêm sách mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form th:action="@{/api/sach/them}" method="post" enctype="multipart/form-data">
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label small fw-bold">Tên cuốn sách</label>
+                                <input type="text" name="tenSach" class="form-control shadow-sm"
+                                    placeholder="Nhập tên sách..." required style="border-radius: 8px;">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Tác giả</label>
+                                <select name="tacGia.maTacGia" class="form-select shadow-sm" required
+                                    style="border-radius: 8px;">
+                                    <option value="">-- Chọn tác giả --</option>
+                                    <option th:each="tg : ${danhSachTacGia}" th:value="${tg.maTacGia}"
+                                        th:text="${tg.tenTacGia}"></option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Thể loại</label>
+                                <select name="theLoai.maTheLoai" class="form-select shadow-sm" required
+                                    style="border-radius: 8px;">
+                                    <option value="">-- Chọn thể loại --</option>
+                                    <option th:each="tl : ${danhSachTheLoai}" th:value="${tl.maTheLoai}"
+                                        th:text="${tl.tenTheLoai}"></option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Nhà xuất bản</label>
+                                <select name="nhaXuatBan.maNxb" class="form-select shadow-sm" required
+                                    style="border-radius: 8px;">
+                                    <option value="">-- Chọn nhà xuất bản --</option>
+                                    <option th:each="nxb : ${danhSachNXB}" th:value="${nxb.maNxb}"
+                                        th:text="${nxb.tenNxb}"></option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Năm xuất bản</label>
+                                <input type="number" name="namXuatBan" class="form-control shadow-sm" placeholder="2026"
+                                    style="border-radius: 8px;">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Số lượng</label>
+                                <input type="number" name="soLuong" class="form-control shadow-sm" value="1"
+                                    style="border-radius: 8px;">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Ảnh bìa sách</label>
+                                <input type="file" name="fileAnh" class="form-control shadow-sm" accept="image/*"
+                                    style="border-radius: 8px;">
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary-custom w-100 py-2 fw-bold text-white">
+                                <i class="bi bi-save me-2"></i>Lưu thông tin
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div th:fragment="modal-edit">
+    <div class="modal fade" id="editBookModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 16px; border: none;">
+                <div class="modal-header border-0 pt-4 px-4 pb-0">
+                    <h5 class="fw-bold"><i class="bi bi-pencil-square me-2 text-warning"></i>Chỉnh sửa thông tin sách
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form th:action="@{/api/sach/sua}" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="maSach" id="edit-maSach">
+
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label small fw-bold">Tên cuốn sách</label>
+                                <input type="text" name="tenSach" id="edit-tenSach" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Tác giả</label>
+                                <select name="tacGia.maTacGia" id="edit-tacGia" class="form-select">
+                                    <option th:each="tg : ${danhSachTacGia}" th:value="${tg.maTacGia}"
+                                        th:text="${tg.tenTacGia}"></option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Thể loại</label>
+                                <select name="theLoai.maTheLoai" id="edit-theLoai" class="form-select">
+                                    <option th:each="tl : ${danhSachTheLoai}" th:value="${tl.maTheLoai}"
+                                        th:text="${tl.tenTheLoai}"></option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Năm xuất bản</label>
+                                <input type="number" name="namXuatBan" id="edit-namXuatBan" class="form-control"
+                                    placeholder="2026">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Số lượng</label>
+                                <input type="number" name="soLuong" id="edit-soLuong" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Thay ảnh bìa (nếu muốn)</label>
+                                <input type="file" name="fileAnh" class="form-control">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-warning w-100 py-2 fw-bold text-white">Xác nhận cập
+                                nhật</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

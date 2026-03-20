@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Inter', sans-serif;
+    color: #1A2027;
+    margin: 0;
+}
+
+/* Thanh thông báo xanh dương đậm trên cùng */
+.top-banner {
+    background-color: #2d7ecf;
+    color: white;
+    text-align: center;
+    padding: 13px 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Navbar trắng, đổ bóng nhẹ, nội dung căn trái trong khung giữa */
+.navbar-custom {
+    background-color: #ffffff;
+    border-bottom: 1px solid #E5EAF2;
+    padding: 8px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo bám lề trái của container */
+.navbar-brand img {
+    height: 32px;
+    margin-right: 24px;
+}
+
+/* Style cho các Tab Menu */
+.nav-item-custom {
+    color: #46505A;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    margin-right: 4px;
+}
+
+/* Hiệu ứng Active: Gradient xanh nhạt, chữ xanh đậm */
+.nav-item-custom.active {
+    background: linear-gradient(135deg, #fff 0%, #d9eaf9 100%);
+    color: #0f66bf !important;
+    border-radius: 8px;
+}
+
+.nav-item-custom:hover:not(.active) {
+    background-color: #F3F6F9;
+    color: #007FFF;
+}
+
+/* Chỉnh độ rộng tối đa của khung nội dung */
+.container {
+    max-width: 1000px !important;
+    /* Em có thể giảm xuống 900px nếu muốn nhỏ nữa */
+}
+
+/* Card sách bo góc lớn theo chuẩn MUI */
+.card-book {
+    border: 1px solid #E5EAF2;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.card-book:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary-custom {
+    background-color: #007FFF;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 8px 20px;
+}
+
+/* Tùy chỉnh bảng */
+.table thead th {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 600;
+    padding: 15px 10px;
+    border-top: none;
+}
+
+.table tbody td {
+    padding: 12px 10px;
+    font-size: 14px;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Icon hành động */
+.btn-group a {
+    transition: transform 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-group a:hover {
+    transform: scale(1.2);
+}
