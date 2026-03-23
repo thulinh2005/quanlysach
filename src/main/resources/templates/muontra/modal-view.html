@@ -1,0 +1,27 @@
+<div th:fragment="modal-view" class="modal fade" id="viewMuonTraModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Chi tiết phiếu mượn</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <label class="text-muted d-block small">Mã phiếu</label>
+                        <span id="view-maMuon" class="fw-bold"></span>
+                    </div>
+                    <div class="col-6">
+                        <label class="text-muted d-block small">Độc giả</label>
+                        <span id="view-docGia" class="fw-bold"></span>
+                    </div>
+                    <div class="col-12">
+                        <hr class="my-1">
+                        <label class="text-muted d-block small">Tên sách mượn</label>
+                        <h5 id="view-sach" class="text-primary fw-bold"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
