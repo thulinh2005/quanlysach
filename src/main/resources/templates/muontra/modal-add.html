@@ -1,0 +1,48 @@
+<div th:fragment="modal-add" class="modal fade" id="addMuonTraModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Lập phiếu mượn mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/muontra/them}" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Độc giả</label>
+                        <select name="maDocGia" class="form-select" required>
+                            <option th:each="dg : ${danhSachDocGia}" th:value="${dg.maDocGia}" th:text="${dg.tenDocGia}"></option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Nhân viên lập phiếu</label>
+                        <select name="maNv" class="form-select" required>
+                            <option th:each="nv : ${danhSachNhanVien}" th:value="${nv.maNv}" th:text="${nv.tenNhanVien}"></option>
+                        </select>
+                    </div>
+<div class="mb-3">
+    <label class="form-label">Sách mượn</label>
+    <div id="add-sach-container">
+        <div class="row g-2 mb-2 sach-row">
+            <div class="col-7">
+                <select name="maSachs[]" class="form-select" id="sach-source">
+                    <option th:each="s : ${danhSachSach}" th:value="${s.maSach}" th:text="${s.tenSach}"></option>
+                </select>
+            </div>
+            <div class="col-3">
+                <input type="number" name="soLuongs[]" class="form-control" value="1" min="1">
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-sm btn-secondary" onclick="addRow('add-sach-container')">+ Thêm sách</button>
+</div>
+ </div> 
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu phiếu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

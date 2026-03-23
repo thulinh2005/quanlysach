@@ -42,13 +42,9 @@ public class GiaoDienController {
         return trangChu(model);
     }
 
-    @GetMapping("/muon-tra")
-    public String trangMuonTra() {
-        return "muon-tra/index";
-    }
-
     @GetMapping("/theloai")
     public String trangTheLoai() {
         return "theloai/index";
     }
+
 }
