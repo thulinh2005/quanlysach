@@ -47,4 +47,8 @@ public class GiaoDienController {
         return "theloai/index";
     }
 
+    @GetMapping("/nxb")
+    public String trangNhaXuatBan() {
+        return "nhaxuatban/index"; // Trỏ đến file templates/nhaxuatban/index.html
+    }
 }
