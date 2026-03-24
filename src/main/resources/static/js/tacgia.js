@@ -35,7 +35,7 @@ function renderTable(data) {
 }
 
 // 3. TÌM KIẾM
-document.getElementById("searchInput").addEventListener("keyup", function() {
+document.getElementById("searchInput").addEventListener("keyup", function () {
     const keyword = this.value.toLowerCase().trim();
     const filtered = dataGlobal.filter(tg => tg.tenTacGia.toLowerCase().includes(keyword));
     renderTable(filtered);
@@ -57,8 +57,21 @@ function addTG() {
 
 // 5. XÓA
 function deleteTG(id) {
-    if (confirm("Xóa tác giả này?")) {
-        fetch(api + "/" + id, { method: "DELETE" }).then(() => loadTacGia());
+    if (confirm("Bạn có chắc chắn muốn xóa tác giả này?")) {
+        fetch(`/api/tacgia/${id}`, {
+            method: 'DELETE'
+        })
+            .then(async response => {
+                if (!response.ok) {
+                    // Nếu server trả về lỗi (400), lấy tin nhắn lỗi từ body
+                    const errorMsg = await response.text();
+                    alert(errorMsg); // Hiển thị: "Không thể xóa! Tác giả này đang có..."
+                } else {
+                    alert("Xóa thành công!");
+                    loadTacGia(); // Gọi lại hàm load lại bảng
+                }
+            })
+            .catch(error => console.error('Lỗi:', error));
     }
 }
 

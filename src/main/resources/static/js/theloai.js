@@ -79,12 +79,27 @@ function addTL() {
 }
 
 // DELETE
+// DELETE
 function deleteTL(id) {
-    if (!confirm("Xóa thể loại này?")) return;
+    if (!confirm("Bạn có chắc chắn muốn xóa thể loại này?")) return;
 
     fetch(api + "/" + id, {
         method: "DELETE"
-    }).then(() => loadTheLoai());
+    })
+        .then(async response => {
+            if (!response.ok) {
+                // Lấy nội dung lỗi từ server ném ra
+                const errorMsg = await response.text();
+                alert(errorMsg);
+            } else {
+                alert("Xóa thành công!");
+                loadTheLoai(); // Gọi đúng hàm để refresh bảng
+            }
+        })
+        .catch(err => {
+            console.error("Lỗi:", err);
+            alert("Đã có lỗi xảy ra!");
+        });
 }
 
 // OPEN EDIT

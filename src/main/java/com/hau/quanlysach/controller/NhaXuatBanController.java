@@ -4,6 +4,7 @@ import java.util.List;
 import com.hau.quanlysach.entity.NhaXuatBan;
 import com.hau.quanlysach.service.NhaXuatBanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,7 +30,12 @@ public class NhaXuatBanController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        service.delete(id);
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        try {
+            service.delete(id);
+            return ResponseEntity.ok().body("Xóa thành công");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

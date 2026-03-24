@@ -34,15 +34,90 @@
                 <table class="table table-hover align-middle mb-0">
                     <thead class="bg-light">
                         <tr>
-                            <th class="ps-3">Mã</th>
-                            <th>Bìa</th>
-                            <th>Tên sách</th>
-                            <th>Thể loại</th>
-                            <th>Tác giả</th>
-                            <th>Năm XB</th>
-                            <th>NXB</th>
-                            <th>Số lượng</th>
-                            <th class="text-center">Hành động</th>
+                            <th class="ps-3" style="white-space: nowrap;">
+                                <a th:href="@{/(sortField='maSach', sortDir=${reverseSortDir})}"
+                                    class="text-decoration-none text-secondary fw-semibold d-flex align-items-center">
+                                    MÃ
+                                    <span class="ms-1" style="font-size: 0.8rem;">
+                                        <i th:if="${sortField == 'maSach'}"
+                                            th:class="${sortDir == 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down'}"></i>
+                                        <i th:if="${sortField != 'maSach'}" class="bi bi-arrow-down-up opacity-50"></i>
+                                    </span>
+                                </a>
+                            </th>
+                            <th class="text-secondary fw-semibold" style="white-space: nowrap;">BÌA</th>
+                            <th style="white-space: nowrap;">
+                                <a th:href="@{/(sortField='tenSach', sortDir=${reverseSortDir})}"
+                                    class="text-decoration-none text-secondary fw-semibold d-flex align-items-center">
+                                    TÊN SÁCH
+                                    <span class="ms-1" style="font-size: 0.8rem;">
+                                        <i th:if="${sortField == 'tenSach'}"
+                                            th:class="${sortDir == 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down'}"></i>
+                                        <i th:if="${sortField != 'tenSach'}" class="bi bi-arrow-down-up opacity-50"></i>
+                                    </span>
+                                </a>
+                            </th>
+                            <th style="white-space: nowrap;">
+                                <a th:href="@{/(sortField='theLoai.tenTheLoai', sortDir=${reverseSortDir})}"
+                                    class="text-decoration-none text-secondary fw-semibold d-flex align-items-center">
+                                    THỂ LOẠI
+                                    <span class="ms-1" style="font-size: 0.8rem;">
+                                        <i th:if="${sortField == 'theLoai.tenTheLoai'}"
+                                            th:class="${sortDir == 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down'}"></i>
+                                        <i th:if="${sortField != 'theLoai.tenTheLoai'}"
+                                            class="bi bi-arrow-down-up opacity-50"></i>
+                                    </span>
+                                </a>
+                            </th>
+                            <th style="white-space: nowrap;">
+                                <a th:href="@{/(sortField='tacGia.tenTacGia', sortDir=${reverseSortDir})}"
+                                    class="text-decoration-none text-secondary fw-semibold d-flex align-items-center">
+                                    TÁC GIẢ
+                                    <span class="ms-1" style="font-size: 0.8rem;">
+                                        <i th:if="${sortField == 'tacGia.tenTacGia'}"
+                                            th:class="${sortDir == 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down'}"></i>
+                                        <i th:if="${sortField != 'tacGia.tenTacGia'}"
+                                            class="bi bi-arrow-down-up opacity-50"></i>
+                                    </span>
+                                </a>
+                            </th>
+                            <th style="white-space: nowrap;">
+                                <a th:href="@{/(sortField='namXuatBan', sortDir=${reverseSortDir})}"
+                                    class="text-decoration-none text-secondary fw-semibold d-flex align-items-center">
+                                    NĂM XB
+                                    <span class="ms-1" style="font-size: 0.8rem;">
+                                        <i th:if="${sortField == 'namXuatBan'}"
+                                            th:class="${sortDir == 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down'}"></i>
+                                        <i th:if="${sortField != 'namXuatBan'}"
+                                            class="bi bi-arrow-down-up opacity-50"></i>
+                                    </span>
+                                </a>
+                            </th>
+                            <th style="white-space: nowrap;">
+                                <a th:href="@{/(sortField='nhaXuatBan.tenNxb', sortDir=${reverseSortDir})}"
+                                    class="text-decoration-none text-secondary fw-semibold d-flex align-items-center">
+                                    NXB
+                                    <span class="ms-1" style="font-size: 0.8rem;">
+                                        <i th:if="${sortField == 'nhaXuatBan.tenNxb'}"
+                                            th:class="${sortDir == 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down'}"></i>
+                                        <i th:if="${sortField != 'nhaXuatBan.tenNxb'}"
+                                            class="bi bi-arrow-down-up opacity-50"></i>
+                                    </span>
+                                </a>
+                            </th>
+                            <th style="white-space: nowrap;">
+                                <a th:href="@{/(sortField='soLuong', sortDir=${reverseSortDir})}"
+                                    class="text-decoration-none text-secondary fw-semibold d-flex align-items-center">
+                                    SL
+                                    <span class="ms-1" style="font-size: 0.8rem;">
+                                        <i th:if="${sortField == 'soLuong'}"
+                                            th:class="${sortDir == 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down'}"></i>
+                                        <i th:if="${sortField != 'soLuong'}" class="bi bi-arrow-down-up opacity-50"></i>
+                                    </span>
+                                </a>
+                            </th>
+                            <th class="text-center text-secondary fw-semibold" style="white-space: nowrap;">HÀNH ĐỘNG
+                            </th>
                         </tr>
                     </thead>
                     <tbody>

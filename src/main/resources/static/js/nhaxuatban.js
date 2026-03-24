@@ -72,8 +72,25 @@ function addNXB() {
 }
 
 function deleteNXB(id) {
-    if (!confirm("Xóa nhà xuất bản này?")) return;
-    fetch(api + "/" + id, { method: "DELETE" }).then(() => loadNXB());
+    if (!confirm("Bạn có chắc chắn muốn xóa nhà xuất bản này?")) return;
+
+    fetch(api + "/" + id, {
+        method: "DELETE"
+    })
+        .then(async response => {
+            if (!response.ok) {
+                // Lấy tin nhắn lỗi từ Service ném ra
+                const errorMsg = await response.text();
+                alert(errorMsg);
+            } else {
+                alert("Xóa thành công!");
+                loadNXB(); // Gọi đúng tên hàm để cập nhật lại bảng
+            }
+        })
+        .catch(err => {
+            console.error("Lỗi:", err);
+            alert("Đã có lỗi xảy ra trong quá trình xóa.");
+        });
 }
 
 function openEdit(id, ten) {

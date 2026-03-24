@@ -5,6 +5,7 @@ import com.hau.quanlysach.entity.TheLoai;
 import com.hau.quanlysach.service.TheLoaiService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,7 +32,13 @@ public class TheLoaiController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        service.delete(id);
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        try {
+            service.delete(id);
+            return ResponseEntity.ok().body("Xóa thành công");
+        } catch (RuntimeException e) {
+            // Trả về lỗi 400 kèm tin nhắn tiếng Việt mình đã viết ở Service
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

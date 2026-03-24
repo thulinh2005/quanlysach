@@ -54,7 +54,7 @@ public class SachController {
 
         // 4. Redirect về đúng trang chủ (Nếu em dùng "/" thì để "/", nếu dùng
         // "/quan-ly-sach" thì sửa lại nhé)
-        return "redirect:/";
+        return "redirect:/sach";
     }
 
     /**
@@ -71,7 +71,7 @@ public class SachController {
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Không thể xóa cuốn sách này.");
         }
-        return "redirect:/";
+        return "redirect:/sach";
     }
 
     @PostMapping("/sua")

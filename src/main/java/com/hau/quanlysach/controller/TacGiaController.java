@@ -3,6 +3,7 @@ package com.hau.quanlysach.controller;
 import com.hau.quanlysach.entity.TacGia;
 import com.hau.quanlysach.service.TacGiaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -29,7 +30,13 @@ public class TacGiaController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        service.delete(id);
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        try {
+            service.delete(id);
+            return ResponseEntity.ok().body("Xóa thành công");
+        } catch (RuntimeException e) {
+            // Trả về lỗi 400 và nội dung tin nhắn lỗi mà mình đã viết ở Service
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

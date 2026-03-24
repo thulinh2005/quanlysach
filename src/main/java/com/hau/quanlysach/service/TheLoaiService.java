@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import com.hau.quanlysach.entity.TheLoai;
+import com.hau.quanlysach.repository.SachRepository;
 import com.hau.quanlysach.repository.TheLoaiRepository;
 
 @Service
@@ -12,6 +13,9 @@ public class TheLoaiService {
 
     @Autowired
     private TheLoaiRepository repo;
+
+    @Autowired
+    private SachRepository sachRepo;
 
     public List<TheLoai> getAll() {
         return repo.findAll();
@@ -28,6 +32,11 @@ public class TheLoaiService {
     }
 
     public void delete(Integer id) {
+        // Kiểm tra xem có cuốn sách nào thuộc thể loại này không
+        long count = sachRepo.countByTheLoaiMaTheLoai(id);
+        if (count > 0) {
+            throw new RuntimeException("Không thể xóa! Thể loại này đang có " + count + " cuốn sách liên quan.");
+        }
         repo.deleteById(id);
     }
 }
