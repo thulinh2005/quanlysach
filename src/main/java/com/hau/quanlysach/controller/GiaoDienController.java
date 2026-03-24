@@ -42,13 +42,18 @@ public class GiaoDienController {
         return trangChu(model);
     }
 
-    @GetMapping("/muon-tra")
-    public String trangMuonTra() {
-        return "muon-tra/index";
-    }
-
     @GetMapping("/theloai")
     public String trangTheLoai() {
         return "theloai/index";
+    }
+
+    @GetMapping("/nxb")
+    public String trangNhaXuatBan() {
+        return "nhaxuatban/index"; // Trỏ đến file templates/nhaxuatban/index.html
+    }
+
+    @GetMapping("/tacgia")
+    public String trangTacGia() {
+        return "tacgia/index"; // Đường dẫn file HTML của bạn
     }
 }
